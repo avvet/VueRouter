@@ -6,8 +6,9 @@
           <router-link to="/">Home</router-link>
           <router-link to="/about">About</router-link>
           <router-link to="/projects">Projects</router-link>
+
         </nav>
-        <h1 class="main_title">About Page</h1>
+        <h1 class="main_title">Single User Page</h1>
         <div class="text">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry.
           Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
@@ -16,15 +17,35 @@
         </div>
       </div>
     </div>
+    <div class="wrapper">
+      <div class="all_user_container">
+        <div class="users" v-if="user">
+          <div class="user user_photo"></div>
+          <div class="user user_info">{{user.name}} {{user.lastName}}</div>
+          <div class="user user_age">{{user.age}} years old</div>
+          <div class="user user_position">{{user.position}}</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import {httpWrapper} from "../../http/http-wrapper";
+
   export default {
     data(){
       return{
-        message:'Hello, World'
+        usersArray:[],
+        user:''
       }
+    },
+    created(){
+      httpWrapper.getUsersFromServer(this.usersArray,(users) => {
+        this.usersArray = users;
+        this.user = this.usersArray[1];
+        console.log(this.user,'USER');
+      })
     }
   }
 </script>

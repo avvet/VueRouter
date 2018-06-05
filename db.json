@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "John",
+      "lastName": "Green",
+      "age": 20,
+      "position": "Manager"
+    },
+    {
+      "id": 1,
+      "name": "Peter",
+      "lastName": "White",
+      "age": 28,
+      "position": "Developer"
+    },
+    {
+      "id": 2,
+      "name": "Michael",
+      "lastName": "Brown",
+      "age": 30,
+      "position": "Director"
+    },
+    {
+      "id": 3,
+      "name": "Nick",
+      "lastName": "Black",
+      "age": 38,
+      "position": "Designer"
+    },
+    {
+      "id": 4,
+      "name": "John",
+      "lastName": "Green",
+      "age": 20,
+      "position": "Manager"
+    },
+    {
+      "id": 5,
+      "name": "Peter",
+      "lastName": "White",
+      "age": 28,
+      "position": "Developer"
+    },
+    {
+      "id": 6,
+      "name": "Michael",
+      "lastName": "Brown",
+      "age": 30,
+      "position": "Director"
+    },
+    {
+      "id": 7,
+      "name": "Nick",
+      "lastName": "Black",
+      "age": 38,
+      "position": "Designer"
+    }
+  ]
+}

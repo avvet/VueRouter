@@ -1,0 +1,52 @@
+@import "../../../assets/styles/variables";
+
+html{
+  margin: 0;
+  padding: 0;
+
+}
+body{
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+.header {
+  width: 100%;
+  height: 760px;
+  background-color: darkcyan;
+  .wrapper {
+    width: 1170px;
+    margin: 0 auto;
+    padding: 0;
+    nav {
+      display: flex;
+      text-transform: uppercase;
+      flex-wrap: nowrap;
+      justify-content: center;
+      padding-top: 40px;
+      a {
+        text-decoration: none;
+        margin: 0 20px 0 20px;
+        color: whitesmoke;
+        &:hover {
+          color: lightgrey;
+        }
+      }
+    }
+    h1 {
+      margin-top: 120px;
+      font-family: "Open Sans";
+      color: white;
+      text-transform: uppercase;
+      font-size: 46px;
+    }
+    .text{
+      width: 600px;
+      color: lightgrey;
+      font-family: "Open Sans";
+      line-height: 36px;
+    }
+  }
+}
+
+
