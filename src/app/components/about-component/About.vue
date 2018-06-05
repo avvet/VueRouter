@@ -6,7 +6,7 @@
         <router-link to="/">Home</router-link>
         <router-link to="/about">About</router-link>
       </nav>
-      <div class="green_square">{{message}}</div>
+      <div class="square green_square">{{message}}</div>
     </div>
   </div>
 </template>
@@ -26,8 +26,30 @@
     width: 1170px;
     margin: 0 auto;
     padding: 0;
-    .main_title{
-
+    h1{
+      text-align: center;
+    }
+    nav{
+      display: flex;
+      text-transform: uppercase;
+      flex-wrap: nowrap;
+      justify-content: center;
+      margin-top: 60px;
+      a{
+        text-decoration: none;
+        margin: 0 20px 0 20px;
+        color: darkblue;
+        &:hover{
+          color: cornflowerblue;
+        }
+      }
+    }
+    .square{
+      width: 800px;
+      height: 200px;
+      background-color: hotpink;
+      margin: 0 auto;
+      margin-top: 80px;
     }
   }
 </style>
