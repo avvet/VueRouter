@@ -7,19 +7,23 @@ import Project from "Components/project-component/Project";
 
 export default [
   {
-    path: '/',
+    path: '/:title',
+    name: 'home',
     component: Home
   },
   {
-    path: '/about',
+    path: '/about/:title',
+    name: 'about',
     component: About
   },
   {
-    path: '/projects',
+    path: '/projects/:title',
+    name: 'projects',
     component: Projects
   },
   {
-    path: '/project',
+    path: '/project/:id',
+    name:'user',
     component: Project
   }
   // {

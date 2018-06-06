@@ -3,7 +3,7 @@
 
 <script>
   import {httpWrapper} from "../../http/http-wrapper";
-  // import todoItem from "./todo-item/todoItem";
+  import Mountain from "../mountain-component/Mountain";
 
 
   export default {
@@ -15,8 +15,9 @@
         animating: false
       }
     },
+    name:'Home',
     components:{
-      // 'todo-item': todoItem
+      'mountain': Mountain
     },
     created(){
 

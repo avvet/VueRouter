@@ -1,13 +1,13 @@
 <template>
   <div>
     <router-view></router-view>
-
     <!--<image-container></image-container>-->
     <!--<animated-list></animated-list>-->
   </div>
 </template>
 
 <script>
+  import Mountain from "Components/mountain-component/Mountain";
   import Home from "Components/home-component/Home";
   import About from "Components/about-component/About";
   import Projects from "Components/projects-component/Projects";
@@ -21,10 +21,11 @@
     },
     name: 'App',
     components: {
-      home: 'Home',
-      about: 'About',
-      projects: 'Projects',
-      project: 'Project'
+      'mountain': Mountain,
+      'home': Home,
+      'about': About,
+      'projects': Projects,
+      'project': Project
     }
   }
 
