@@ -1,6 +1,5 @@
 <template>
   <div>
-    <mountain></mountain>
     <div class="wrapper">
       <div class="all_user_container">
         <div class="singleUser" v-if="user">

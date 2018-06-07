@@ -1,11 +1,11 @@
 <template>
   <div>
-    <mountain></mountain>
+
   </div>
 </template>
 
 <script>
-  import Mountain from "../mountain-component/Mountain";
+  // import Mountain from "../mountain-component/Mountain";
 
   export default {
     data(){
@@ -15,7 +15,7 @@
     },
     name:'About',
     components:{
-      'mountain': Mountain
+      // 'mountain': Mountain
     }
   }
 </script>

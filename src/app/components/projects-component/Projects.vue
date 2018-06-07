@@ -1,6 +1,5 @@
 <template>
   <div>
-    <mountain></mountain>
     <div class="wrapper">
       <div class="all_user_container">
           <div class="users" v-for="(user,index) in usersArray">
@@ -19,7 +18,7 @@
 
 <script>
   import {httpWrapper} from "../../http/http-wrapper";
-  import Mountain from "../mountain-component/Mountain";
+  // import Mountain from "../mountain-component/Mountain";
 
   export default {
     data(){
@@ -31,7 +30,7 @@
     },
     name:'Projects',
     components:{
-      'mountain': Mountain
+      // 'mountain': Mountain
     },
     created(){
       httpWrapper.getUsersFromServer(this.usersArray,(users) => {

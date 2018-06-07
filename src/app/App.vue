@@ -1,8 +1,9 @@
 <template>
   <div>
-    <router-view></router-view>
-    <!--<image-container></image-container>-->
-    <!--<animated-list></animated-list>-->
+    <!--<mountain></mountain>-->
+    <!--<router-view></router-view>-->
+    <router-view name="header"></router-view>
+    <router-view name="content"></router-view>
   </div>
 </template>
 

@@ -3,7 +3,7 @@
 
 <script>
   import {httpWrapper} from "../../http/http-wrapper";
-  import Mountain from "../mountain-component/Mountain";
+  // import Mountain from "../mountain-component/Mountain";
 
 
   export default {
@@ -17,7 +17,7 @@
     },
     name:'Home',
     components:{
-      'mountain': Mountain
+      // 'mountain': Mountain
     },
     created(){
 
