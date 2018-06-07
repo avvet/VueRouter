@@ -17,7 +17,6 @@
 
 <script>
   import {httpWrapper} from "../../http/http-wrapper";
-  import Mountain from "../mountain-component/Mountain";
 
   export default {
     data(){
@@ -27,9 +26,6 @@
       }
     },
     name:'Project',
-    components:{
-      'mountain': Mountain
-    },
     created(){
       httpWrapper.getUsersFromServer(this.usersArray,(users) => {
         this.usersArray = users;

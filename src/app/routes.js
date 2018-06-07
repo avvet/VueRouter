@@ -3,7 +3,7 @@ import Home from "Components/home-component/Home";
 import About from "Components/about-component/About";
 import Projects from "Components/projects-component/Projects";
 import Project from "Components/project-component/Project";
-import Mountain from "Components/mountain-component/Mountain";
+import HeaderComponent from "Components/header-component/HeaderComponent";
 
 
 export default [
@@ -11,7 +11,7 @@ export default [
     path: '/',
     name: 'home',
     components: {
-      header: Mountain,
+      header: HeaderComponent,
       content: Home
     },
     props: {
@@ -23,7 +23,7 @@ export default [
     path: "/about",
     name: 'about',
     components: {
-      header: Mountain,
+      header: HeaderComponent,
       content : About
     },
     props: {
@@ -35,7 +35,7 @@ export default [
     path: "/projects",
     name: 'projects',
     components: {
-      header: Mountain,
+      header: HeaderComponent,
       content : Projects
     },
     props: {
@@ -47,7 +47,7 @@ export default [
     path: "/project/:id",
     name: 'user',
     components: {
-      header: Mountain,
+      header: HeaderComponent,
       content : Project
     },
     props: {

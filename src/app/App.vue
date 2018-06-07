@@ -8,11 +8,6 @@
 </template>
 
 <script>
-  import Mountain from "Components/mountain-component/Mountain";
-  import Home from "Components/home-component/Home";
-  import About from "Components/about-component/About";
-  import Projects from "Components/projects-component/Projects";
-  import Project from "Components/project-component/Project";
 
   export default {
     data() {
@@ -21,13 +16,6 @@
       }
     },
     name: 'App',
-    components: {
-      'mountain': Mountain,
-      'home': Home,
-      'about': About,
-      'projects': Projects,
-      'project': Project
-    }
   }
 
 </script>
