@@ -12,7 +12,7 @@ export default [
     name: 'home',
     components: {
       header: HeaderComponent,
-      content: Home
+      content: Home,
     },
     props: {
       header: true,
@@ -24,7 +24,8 @@ export default [
     name: 'about',
     components: {
       header: HeaderComponent,
-      content : About
+      content : About,
+
     },
     props: {
       header: true,
@@ -56,35 +57,4 @@ export default [
     }
   },
 
-
-
-
-  // {
-  //   path: '/:title',
-  //   name: 'home',
-  //   component: Home,
-  //
-  // },
-  // {
-  //   path: '/home/:title',
-  //   redirect: '/'
-  // },
-  // {
-  //   path: '/about/:title',
-  //   name: 'about',
-  //   component: About,
-  //
-  // },
-  // {
-  //   path: '/projects/:title',
-  //   name: 'projects',
-  //   component: Projects,
-  //
-  // },
-  // {
-  //   path: '/project/:id',
-  //   name:'user',
-  //   component: Project,
-  //
-  // }
 ]

@@ -10,6 +10,28 @@ body{
   margin: 0;
   font-family: 'Open Sans', sans-serif;
 }
-
-
+.wrapper {
+  width: 1170px;
+  margin: 0 auto;
+  padding: 0;
+}
+.title{
+  //float: left;
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  margin-top: 60px;
+  font-family: "Open Sans";
+  font-size: 24px;
+  font-weight: bold;
+  color: #374e89;
+}
+.photo{
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 600px;
+  height: 250px;
+  background-color: whitesmoke;
+}
 

@@ -1,14 +1,17 @@
 <template>
   <div>
-    <!--<mountain></mountain>-->
     <!--<router-view></router-view>-->
-    <router-view name="header"></router-view>
-    <router-view name="content"></router-view>
+    <section class="main_body">
+      <router-view :key="$route.fullPath" name="header"></router-view>
+      <router-view :key="$route.fullP" name="content"></router-view>
+    </section>
+
+
   </div>
 </template>
 
 <script>
-
+  // import HeaderComponent from "Components/header-component/HeaderComponent";
   export default {
     data() {
       return {
@@ -16,6 +19,9 @@
       }
     },
     name: 'App',
+    components:{
+      // 'header-component':HeaderComponent
+    }
   }
 
 </script>

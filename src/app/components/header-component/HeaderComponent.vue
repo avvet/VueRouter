@@ -22,62 +22,62 @@
   const HOME_PAGE = 'home';
   const ABOUT_PAGE = 'about';
   const PROJECTS_PAGE = 'projects';
+  const PROJECT_PAGE = 'project';
 
   export default {
     data(){
       return{
-        backgroundColor: 'lightblue',
-        color: 'orange',
-        title: 'YOU MUST PUT A TITLE HERE!!!',
-        test: 'Default Text',
-        description: 'Default description',
+        // name: this.$route.params.name
+        // backgroundColor: 'lightblue',
+        // color: 'orange',
+        // title: 'YOU MUST PUT A TITLE HERE!!!',
+        // test: 'Default Text',
+        // description: 'Default description',
         homePageHeaderParams: { color: 'white', backgroundColor:'#008B8B', title: 'HomePage', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'},
         aboutPageHeaderParams: { color: 'black', backgroundColor:'#9370DB', title: 'About Page', description: 'Color and Title set. Default Text.'},
-        projectsPageHeaderParams: { color: '#374e89', backgroundColor:'#778899', title: 'Projects Page', description: 'No iusto vivendo eleifend his, sit an lorem everti.'}
+        projectsPageHeaderParams: { color: '#374e89', backgroundColor:'#778899', title: 'Projects Page', description: 'No iusto vivendo eleifend his, sit an lorem everti.'},
+        projectPageHeaderParams: { color: '#374e89', backgroundColor:'#778899', title: 'Projects Page', description: 'No iusto vivendo eleifend his, sit an lorem everti.'}
       }
     },
+
     name:'HeaderComponent',
-    props: {
-      // color: {
-      //   type: String,
-      //   required: false,
-      //   default: 'orange'
-      // },
-      // backgroundColor: {
-      //   type: String,
-      //   required: false,
-      //   default: 'lightblue'
-      // },
-      customClasses: {
-        type: Array,
-        required: false,
-        default: () => []
-      },
-      // title: {
-      //   type: String,
-      //   required: false,
-      //   default: 'YOU MUST PUT A TITLE HERE!!!'
-      // },
-      // text: {
-      //   type: String,
-      //   required: false,
-      //   default: 'Default Text' // this default will not work if 'config' object is passed to route. Even if it is empty.
-      // },
-      // description: {
-      //   type: String,
-      //   required: false,
-      //   default: 'Default description'
-      // },
-      action: {
-        type: String,
-        required: false
-      }
-    },
+    // props: {
+    //   color: {
+    //     type: String,
+    //     required: false,
+    //     default: 'orange'
+    //   },
+    //   backgroundColor: {
+    //     type: String,
+    //     required: false,
+    //     default: 'lightblue'
+    //   },
+    //   customClasses: {
+    //     type: Array,
+    //     required: false,
+    //     // default: () => []
+    //   },
+    //   title: {
+    //     type: String,
+    //     required: false,
+    //     default: 'YOU MUST PUT A TITLE HERE!!!'
+    //   },
+    //   text: {
+    //     type: String,
+    //     required: false,
+    //     default: 'Default Text' // this default will not work if 'config' object is passed to route. Even if it is empty.
+    //   },
+    //   description: {
+    //     type: String,
+    //     required: false,
+    //     default: 'Default description'
+    //   }
+    // },
     watch:{
-      $route (to, from){
-        console.log(this.$route.params, '////', this.$route);
-        this.setHeaderParams();
-      }
+      // $route (to, from){
+      //   console.log(this.$route.params, '////', this.$route);
+      //   this.setHeaderParams();
+      // }
     },
     created() {
       let routeName = this.$route.name;
@@ -112,6 +112,9 @@
           case PROJECTS_PAGE:
             this.setProjectsHeaderParams();
             break;
+          case PROJECT_PAGE:
+            this.setProjectHeaderParams();
+            break;
         }
       },
       programHeaderParams() {
@@ -135,6 +138,12 @@
         this.color = this.projectsPageHeaderParams.color;
         this.title = this.projectsPageHeaderParams.title;
         this.description = this.projectsPageHeaderParams.description;
+      },
+      setProjectHeaderParams() {
+        this.backgroundColor = this.projectPageHeaderParams.backgroundColor;
+        this.color = this.projectPageHeaderParams.color;
+        this.title = this.projectPageHeaderParams.title;
+        this.description = this.projectPageHeaderParams.description;
       }
     }
   }
