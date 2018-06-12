@@ -3,9 +3,9 @@
     <div class="wrapper">
       <div class="all_user_container">
           <div class="users" v-for="(user,index) in usersArray">
-            <router-link :to="{name:'user', params:{id:user.id}}">
+            <router-link :to="{name:'user', params:{id:user.id, color: 'blue', title: 'HomePage', description: 'Lorem Ipsum is simply dummy text.'}}">
               <div class="user user_photo"></div>
-              <div class="user user_info">{{user.name}} {{user.lastName}}</div>
+              <div class="user user_info">{{user.name}} {{user.lastName}} </div>
             </router-link>
             <div class="user user_age">{{user.age}} years old</div>
             <div class="user user_position">{{user.position}}</div>
@@ -18,7 +18,6 @@
 
 <script>
   import {httpWrapper} from "../../http/http-wrapper";
-  // import Mountain from "../mountain-component/Mountain";
 
   export default {
     data(){
@@ -30,11 +29,13 @@
     },
     name:'Projects',
     components:{
-      // 'mountain': Mountain
+      // 'header-component':HeaderComponent
     },
+
     created(){
       httpWrapper.getUsersFromServer(this.usersArray,(users) => {
         this.usersArray = users;
+
       })
     }
   }

@@ -17,6 +17,7 @@
 
 <script>
   import {httpWrapper} from "../../http/http-wrapper";
+  // import HeaderComponent from "../header-component/HeaderComponent";
 
   export default {
     data(){
@@ -26,13 +27,17 @@
       }
     },
     name:'Project',
+    components:{
+      // 'header-component':HeaderComponent
+    },
     created(){
       httpWrapper.getUsersFromServer(this.usersArray,(users) => {
         this.usersArray = users;
         let userId = this.$route.params.id;
         this.user = this.usersArray[userId];
+
       })
-    }
+    },
   }
 </script>
 

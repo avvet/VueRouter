@@ -22,21 +22,21 @@
   const HOME_PAGE = 'home';
   const ABOUT_PAGE = 'about';
   const PROJECTS_PAGE = 'projects';
-  const PROJECT_PAGE = 'project';
+  const PROJECT_PAGE = 'user';
 
   export default {
     data(){
       return{
         // name: this.$route.params.name
-        // backgroundColor: 'lightblue',
+        backgroundColor: 'lightblue',
         // color: 'orange',
-        // title: 'YOU MUST PUT A TITLE HERE!!!',
+        title: 'YOU MUST PUT A TITLE HERE!!!',
         // test: 'Default Text',
-        // description: 'Default description',
+        description: 'Default description',
         homePageHeaderParams: { color: 'white', backgroundColor:'#008B8B', title: 'HomePage', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'},
         aboutPageHeaderParams: { color: 'black', backgroundColor:'#9370DB', title: 'About Page', description: 'Color and Title set. Default Text.'},
         projectsPageHeaderParams: { color: '#374e89', backgroundColor:'#778899', title: 'Projects Page', description: 'No iusto vivendo eleifend his, sit an lorem everti.'},
-        projectPageHeaderParams: { color: '#374e89', backgroundColor:'#778899', title: 'Projects Page', description: 'No iusto vivendo eleifend his, sit an lorem everti.'}
+        projectPageHeaderParams: { color: 'purple', backgroundColor:'#5DADE2', title: 'Single User Page', description: 'No iusto vivendo eleifend his, sit an lorem everti.'}
       }
     },
 
@@ -84,6 +84,7 @@
       console.warn(routeName, 'PARAMS');
       this.setHeaderParams();
 
+
     },
     computed:{
       titleStyles() {
@@ -94,7 +95,8 @@
       },
       bgColor() {
         return `background-color: ${this.backgroundColor}`;
-      }
+      },
+
     },
     methods:{
       goHome(){
@@ -194,10 +196,16 @@
       margin-top: 60px;
       width: 150px;
       height: 45px;
-      background-color: #374e89;
+      background-color: #34495E;
       color: white;
       border: none;
       font-size: 14px;
+      cursor: pointer;
+      transition: all .2s;
+      line-height: 45px;
+      &:hover{
+        background-color: #212F3C;
+      }
     }
   }
 </style>
