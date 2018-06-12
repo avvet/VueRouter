@@ -41,38 +41,7 @@
     },
 
     name:'HeaderComponent',
-    // props: {
-    //   color: {
-    //     type: String,
-    //     required: false,
-    //     default: 'orange'
-    //   },
-    //   backgroundColor: {
-    //     type: String,
-    //     required: false,
-    //     default: 'lightblue'
-    //   },
-    //   customClasses: {
-    //     type: Array,
-    //     required: false,
-    //     // default: () => []
-    //   },
-    //   title: {
-    //     type: String,
-    //     required: false,
-    //     default: 'YOU MUST PUT A TITLE HERE!!!'
-    //   },
-    //   text: {
-    //     type: String,
-    //     required: false,
-    //     default: 'Default Text' // this default will not work if 'config' object is passed to route. Even if it is empty.
-    //   },
-    //   description: {
-    //     type: String,
-    //     required: false,
-    //     default: 'Default description'
-    //   }
-    // },
+
     watch:{
       // $route (to, from){
       //   console.log(this.$route.params, '////', this.$route);
