@@ -1,18 +1,25 @@
 <template>
   <div >
     <div class="header" :style="bgColor">
-      <div class="wrapper">
-        <nav>
-
+        <div class="icon_cross" @click="openMenuToggle">
+          <i class="fa fa-bars"></i>
+        </div>
+        <nav v-show="closeIcon">
+          <div class="icon_cross" @click="closeMenuToggle">
+            <i class="fa fa-close"></i>
+          </div>
           <router-link :to="{ name: 'home'}">Homepage</router-link>
           <router-link :to="{ name: 'about'}">About</router-link>
           <router-link :to="{ name: 'projects'}">Projects</router-link>
-
         </nav>
-        <h1 :style="titleStyles" :class="classList" class="main_title">{{title}}</h1>
-        <div class="text">{{description}}</div>
-        <button @click="goHome" class="go_home_btn">go home</button>
-      </div>
+        <div class="wrapper">
+          <div class="header_content_container">
+            <h1 :style="titleStyles" :class="classList" class="main_title">{{title}}</h1>
+            <div class="text">{{description}}</div>
+            <button @click="goHome" class="go_home_btn">go home</button>
+          </div>
+        </div>
+
     </div>
   </div>
 </template>
@@ -27,6 +34,7 @@
   export default {
     data(){
       return{
+        closeIcon: false,
         // name: this.$route.params.name
         backgroundColor: 'lightblue',
         // color: 'orange',
@@ -64,12 +72,18 @@
       },
       bgColor() {
         return `background-color: ${this.backgroundColor}`;
-      },
+      }
 
     },
     methods:{
       goHome(){
         this.$router.push({ name: 'home', params: { color: 'blue', title: 'HomePage', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'} });
+      },
+      closeMenuToggle(){
+         this.closeIcon =! this.closeIcon;
+      },
+      openMenuToggle(){
+        this.closeIcon =! this.closeIcon;
       },
       setHeaderParams() {
         let routeName = this.$route.name;
@@ -134,46 +148,73 @@
       display: flex;
       text-transform: uppercase;
       flex-wrap: nowrap;
-      justify-content: center;
-      padding-top: 40px;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 20%;
+      height: 290px;
+      background-color: black;
+      opacity:.8;
+      position: absolute;
+      padding: 20px 0 450px 0;
+      .icon_cross{
+        color: white;
+        align-self: flex-end;
+        margin-right: 40px;
+        cursor: pointer;
+        padding: 13px;
+        transition: all .2s;
+        &:hover{
+          color: grey;
+        }
+        .fa-close{
+          font-size: 18px;
+        }
+      }
       a {
+
         text-decoration: none;
-        margin: 0 20px 0 20px;
+        margin-left: 40px;
         color: whitesmoke;
+        position: relative;
         &:hover {
-          color: lightgrey;
+          color: grey;
         }
       }
       .router-link-exact-active{
-        color: indigo;
+        color: grey;
       }
     }
-    h1 {
-      margin-top: 120px;
-      font-family: "Open Sans";
-      color: black;
-      text-transform: uppercase;
-      font-size: 46px;
-    }
-    .text{
-      width: 600px;
-      color: whitesmoke;
-      font-family: "Open Sans";
-      line-height: 36px;
-    }
-    .go_home_btn{
-      margin-top: 60px;
-      width: 150px;
-      height: 45px;
-      background-color: #34495E;
-      color: white;
-      border: none;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all .2s;
-      line-height: 45px;
-      &:hover{
-        background-color: #212F3C;
+    .header_content_container{
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        margin-top: 120px;
+        font-family: "Open Sans";
+        color: black;
+        text-transform: uppercase;
+        font-size: 46px;
+      }
+      .text{
+        width: 600px;
+        color: whitesmoke;
+        font-family: "Open Sans";
+        /*line-height: 36px;*/
+      }
+      .go_home_btn{
+        margin-top: 60px;
+        width: 150px;
+        height: 45px;
+        background-color: #34495E;
+        color: white;
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all .2s;
+        /*line-height: 45px;*/
+        &:hover{
+          background-color: #212F3C;
+        }
       }
     }
   }
