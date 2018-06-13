@@ -3,7 +3,7 @@
     <div class="wrapper">
       <div class="all_user_container">
           <div class="users" v-for="(user,index) in usersArray">
-            <router-link @click.native="updatePost" :to="{name:'user', params:{id:user.id, color: 'blue', title: 'HomePage', description: 'Lorem Ipsum is simply dummy text.'}}">
+            <router-link @click.native="updatePost" :to="{name:'user', params:{id:user.id}}">
               <div class="user user_photo"></div>
               <div class="user user_info">{{user.name}} {{user.lastName}} </div>
             </router-link>

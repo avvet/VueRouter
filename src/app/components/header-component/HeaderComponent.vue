@@ -10,7 +10,17 @@
           </div>
           <router-link :to="{ name: 'home'}">Homepage</router-link>
           <router-link :to="{ name: 'about'}">About</router-link>
-          <router-link :to="{ name: 'projects'}">Projects</router-link>
+          <router-link :to="{ name: 'projects'}">Projects
+            <div class="dropdown">
+              <div class="single_user" v-for="(user,index) in usersArray">
+                <!--<div class="single_user_link" >{{user.name}} {{user.lastName}}</div>-->
+                  <router-link :to="{name:'user', params:{id:user.id}}">
+                    <div class="user user_info" >{{user.name}} {{user.lastName}}</div>
+                  </router-link>
+              <!--</div>-->
+              </div>
+            </div>
+          </router-link>
         </nav>
         <div class="wrapper">
           <div class="header_content_container">
@@ -25,6 +35,7 @@
 </template>
 
 <script>
+  import {httpWrapper} from "../../http/http-wrapper";
 
   const HOME_PAGE = 'home';
   const ABOUT_PAGE = 'about';
@@ -34,8 +45,10 @@
   export default {
     data(){
       return{
+        id: this.$route.params.id,
+        usersArray:[],
+        user:'',
         closeIcon: false,
-        // name: this.$route.params.name
         backgroundColor: 'lightblue',
         // color: 'orange',
         title: 'YOU MUST PUT A TITLE HERE!!!',
@@ -49,7 +62,11 @@
     },
 
     name:'HeaderComponent',
-
+    beforeRouteUpdate(to) {
+      this.id = to.params.id;
+      console.log(this.id,'ID');
+      // this.$router.go(this.$router.currentRoute);
+    },
     watch:{
       // $route (to, from){
       //   console.log(this.$route.params, '////', this.$route);
@@ -60,7 +77,7 @@
       let routeName = this.$route.name;
       console.warn(routeName, 'PARAMS');
       this.setHeaderParams();
-
+      this.getNewUser();
 
     },
     computed:{
@@ -76,6 +93,18 @@
 
     },
     methods:{
+      getNewUser(){
+        httpWrapper.getUsersFromServer(this.usersArray,(users) => {
+          this.usersArray = users;
+          let userId = this.$route.params.id;
+          this.user = this.usersArray[userId];
+        })
+      },
+      // linkToUser(){
+      //     this.$router.push('/project/:id');
+      //     // console.log(userId,'USERID');
+      //
+      // },
       goHome(){
         this.$router.push({ name: 'home', params: { color: 'blue', title: 'HomePage', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'} });
       },
@@ -153,7 +182,6 @@
       text-transform: uppercase;
       flex-wrap: nowrap;
       flex-direction: column;
-      justify-content: flex-start;
       width: 20%;
       height: 100vh;
       background-color: black;
@@ -161,7 +189,7 @@
         color: white;
         align-self: flex-start;
         margin-left: 10%;
-        margin-top: 5%;
+        margin-top: 7%;
         cursor: pointer;
         transition: all .2s;
         &:hover{
@@ -172,6 +200,7 @@
         }
       }
       a {
+        font-family: "Open Sans";
         margin-top: 60px;
         text-decoration: none;
         margin-left: 40px;
@@ -211,11 +240,31 @@
         font-size: 14px;
         cursor: pointer;
         transition: all .2s;
-        /*line-height: 45px;*/
         &:hover{
           background-color: #212F3C;
         }
       }
+    }
+    .dropdown{
+      margin-top: 10px;
+      visibility: hidden;
+      opacity:0;
+      transition: .2s;
+    }
+    .single_user{
+      text-transform: none;
+      margin: 0;
+      padding: 0;
+      height: 45px;
+      a{
+        font-size: 14px;
+        margin-top: 0;
+        padding: 0;
+      }
+    }
+    nav a:hover .dropdown{
+      visibility: visible;
+      opacity:1;
     }
   }
 </style>
