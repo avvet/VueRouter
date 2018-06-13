@@ -27,15 +27,16 @@
       }
     },
     name:'Project',
-    components:{
-      // 'header-component':HeaderComponent
+    beforeRouteUpdate(to, from, next) {
+      this.id = to.params.id;
+      this.user = this.usersArray[this.id];
+      next();
     },
     created(){
       httpWrapper.getUsersFromServer(this.usersArray,(users) => {
         this.usersArray = users;
         let userId = this.$route.params.id;
         this.user = this.usersArray[userId];
-
       })
     },
   }

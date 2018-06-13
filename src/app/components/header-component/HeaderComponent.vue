@@ -8,23 +8,19 @@
           <div class="icon_cross" @click="menuToggle">
             <i class="fa fa-close"></i>
           </div>
-          <router-link :to="{ name: 'home'}">Homepage</router-link>
-          <router-link :to="{ name: 'about'}">About</router-link>
-          <router-link :to="{ name: 'projects'}">Projects
-            <div class="dropdown">
-              <div class="single_user" v-for="(user,index) in usersArray">
-                <!--<div class="single_user_link" >{{user.name}} {{user.lastName}}</div>-->
-                  <router-link :to="{name:'user', params:{id:user.id}}">
-                    <div class="user user_info" >{{user.name}} {{user.lastName}}</div>
-                  </router-link>
-              <!--</div>-->
-              </div>
+          <div class="menu_link" @click="navTo('home')">Homepage</div>
+          <div class="menu_link" @click="navTo('about')">About</div>
+          <div class="menu_link" @click="onToggleProjectsLinks">Projects</div>
+          <div class="dropdown" v-if="isProjectsLinksVisible">
+            <div class="menu_link" @click="navTo('projects')">all projects</div>
+            <div class="single_user" v-for="(user,index) in usersArray" :key="user.id"  @click="navigateToUser(user.id)">
+              <div class="user user_info" >{{user.name}} {{user.lastName}}</div>
             </div>
-          </router-link>
+          </div>
         </nav>
         <div class="wrapper">
           <div class="header_content_container">
-            <h1 :style="titleStyles" :class="classList" class="main_title">{{title}}</h1>
+            <h1 :style="titleStyles" class="main_title">{{title}}</h1>
             <div class="text">{{description}}</div>
             <button @click="goHome" class="go_home_btn">go home</button>
           </div>
@@ -49,10 +45,9 @@
         usersArray:[],
         user:'',
         closeIcon: false,
+        isProjectsLinksVisible: false,
         backgroundColor: 'lightblue',
-        // color: 'orange',
         title: 'YOU MUST PUT A TITLE HERE!!!',
-        // test: 'Default Text',
         description: 'Default description',
         homePageHeaderParams: { color: 'white', backgroundColor:'#008B8B', title: 'HomePage', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'},
         aboutPageHeaderParams: { color: 'black', backgroundColor:'#9370DB', title: 'About Page', description: 'Color and Title set. Default Text.'},
@@ -62,17 +57,6 @@
     },
 
     name:'HeaderComponent',
-    beforeRouteUpdate(to) {
-      this.id = to.params.id;
-      console.log(this.id,'ID');
-      // this.$router.go(this.$router.currentRoute);
-    },
-    watch:{
-      // $route (to, from){
-      //   console.log(this.$route.params, '////', this.$route);
-      //   this.setHeaderParams();
-      // }
-    },
     created() {
       let routeName = this.$route.name;
       console.warn(routeName, 'PARAMS');
@@ -84,9 +68,6 @@
       titleStyles() {
         return `color: ${this.color}`
       },
-      classList() {
-        return this.customClasses;
-      },
       bgColor() {
         return `background-color: ${this.backgroundColor}`;
       }
@@ -96,17 +77,20 @@
       getNewUser(){
         httpWrapper.getUsersFromServer(this.usersArray,(users) => {
           this.usersArray = users;
-          let userId = this.$route.params.id;
-          this.user = this.usersArray[userId];
         })
       },
-      // linkToUser(){
-      //     this.$router.push('/project/:id');
-      //     // console.log(userId,'USERID');
-      //
-      // },
       goHome(){
         this.$router.push({ name: 'home', params: { color: 'blue', title: 'HomePage', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'} });
+      },
+      navTo(routeName) {
+        this.$router.push({name:routeName})
+      },
+      navigateToUser(userId) {
+        this.$router.push({name:'user', params:{id: userId}});
+      },
+      onToggleProjectsLinks() {
+        console.log(this.isProjectsLinksVisible);
+        this.isProjectsLinksVisible = !this.isProjectsLinksVisible;
       },
       menuToggle(){
          this.closeIcon =! this.closeIcon;
@@ -130,7 +114,6 @@
       },
       programHeaderParams() {
         let routeName = this.$route.name + 'PageHeaderParams';
-        console.log(routeName, 'routeName');
       },
       setHomeHeaderParams() {
         this.backgroundColor = this.homePageHeaderParams.backgroundColor;
@@ -199,6 +182,18 @@
           font-size: 20px;
         }
       }
+      .menu_link {
+        font-family: "Open Sans";
+        margin-top: 60px;
+        text-decoration: none;
+        margin-left: 40px;
+        color: whitesmoke;
+        position: relative;
+        cursor: pointer;
+        &:hover {
+          color: grey;
+        }
+      }
       a {
         font-family: "Open Sans";
         margin-top: 60px;
@@ -247,8 +242,8 @@
     }
     .dropdown{
       margin-top: 10px;
-      visibility: hidden;
-      opacity:0;
+      /*visibility: hidden;*/
+      /*opacity:0;*/
       transition: .2s;
     }
     .single_user{
@@ -256,15 +251,16 @@
       margin: 0;
       padding: 0;
       height: 45px;
+      color: #ffffff;
       a{
         font-size: 14px;
         margin-top: 0;
         padding: 0;
       }
     }
-    nav a:hover .dropdown{
-      visibility: visible;
-      opacity:1;
-    }
+    /*nav a:hover .dropdown{*/
+      /*visibility: visible;*/
+      /*opacity:1;*/
+    /*}*/
   }
 </style>
