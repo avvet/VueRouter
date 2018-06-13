@@ -1,11 +1,11 @@
 <template>
   <div >
     <div class="header" :style="bgColor">
-        <div class="icon_cross" @click="openMenuToggle">
+        <div class="icon_bar" @click="menuToggle">
           <i class="fa fa-bars"></i>
         </div>
         <nav v-show="closeIcon">
-          <div class="icon_cross" @click="closeMenuToggle">
+          <div class="icon_cross" @click="menuToggle">
             <i class="fa fa-close"></i>
           </div>
           <router-link :to="{ name: 'home'}">Homepage</router-link>
@@ -79,11 +79,8 @@
       goHome(){
         this.$router.push({ name: 'home', params: { color: 'blue', title: 'HomePage', description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'} });
       },
-      closeMenuToggle(){
+      menuToggle(){
          this.closeIcon =! this.closeIcon;
-      },
-      openMenuToggle(){
-        this.closeIcon =! this.closeIcon;
       },
       setHeaderParams() {
         let routeName = this.$route.name;
@@ -142,36 +139,40 @@
   }
   .header {
     width: 100%;
-    height: 760px;
-    /*background-color: hotpink;*/
+    height: 100vh;
+    .icon_bar{
+      position: fixed;
+      font-size: 20px;
+      color: white;
+      top: 2%;
+      left: 2%;
+    }
     nav {
+      position: fixed;
       display: flex;
       text-transform: uppercase;
       flex-wrap: nowrap;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: flex-start;
       width: 20%;
-      height: 290px;
+      height: 100vh;
       background-color: black;
-      opacity:.8;
-      position: absolute;
-      padding: 20px 0 450px 0;
       .icon_cross{
         color: white;
-        align-self: flex-end;
-        margin-right: 40px;
+        align-self: flex-start;
+        margin-left: 10%;
+        margin-top: 5%;
         cursor: pointer;
-        padding: 13px;
         transition: all .2s;
         &:hover{
           color: grey;
         }
         .fa-close{
-          font-size: 18px;
+          font-size: 20px;
         }
       }
       a {
-
+        margin-top: 60px;
         text-decoration: none;
         margin-left: 40px;
         color: whitesmoke;
@@ -189,7 +190,7 @@
       flex-direction: column;
 
       h1 {
-        margin-top: 120px;
+        margin-top: 25%;
         font-family: "Open Sans";
         color: black;
         text-transform: uppercase;
@@ -199,7 +200,6 @@
         width: 600px;
         color: whitesmoke;
         font-family: "Open Sans";
-        /*line-height: 36px;*/
       }
       .go_home_btn{
         margin-top: 60px;
